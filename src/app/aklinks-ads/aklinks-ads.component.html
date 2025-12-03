@@ -1,4 +1,22 @@
 <section class="aklinks-ads">
+
+  <!-- Scroll Down Message -->
+  <div class="scroll-message-overlay" *ngIf="showScrollMessage">
+    <div class="scroll-message-content">
+      <div class="scroll-icon" [class.hidden]="hasScrolled">⬇</div>
+      <h2 class="scroll-title" *ngIf="!hasScrolled">Scroll Down</h2>
+      <h2 class="scroll-title" *ngIf="hasScrolled">Great!</h2>
+      <p class="scroll-text" *ngIf="!hasScrolled">Please scroll down to continue</p>
+      <p class="scroll-text" *ngIf="hasScrolled">You can now continue</p>
+      <button class="continue-button" *ngIf="showContinueButton" (click)="onContinueClick()">
+        Continue
+      </button>
+      <div class="scroll-progress" *ngIf="!hasScrolled">
+        <div class="scroll-progress-bar" [style.width.%]="scrollProgress"></div>
+      </div>
+    </div>
+  </div>
+
   <article class="blog-post">
     <header class="blog-header">
       <h1 class="blog-title">The Education of a PhD: Meaning, Journey, Challenges and Impact</h1>
@@ -55,6 +73,23 @@
         <li>Developing new theories or frameworks</li>
       </ul>
 
+      <!-- Button/Countdown Position 1 -->
+      <div class="inline-button-container" *ngIf="buttonStates[1].enabled">
+        <button class="inline-button" *ngIf="buttonStates[1].showButton && !buttonStates[1].showCountdown" (click)="onButtonClick(1)">
+          <span class="button-text">Continue Reading</span>
+          <span class="button-icon">→</span>
+        </button>
+        <div class="inline-countdown" *ngIf="buttonStates[1].showCountdown">
+          <div class="countdown-display">
+            <span class="countdown-number">{{ buttonStates[1].countdown }}</span>
+            <span class="countdown-text">seconds</span>
+          </div>
+          <div class="countdown-progress">
+            <div class="countdown-progress-bar" [style.width.%]="(10 - buttonStates[1].countdown) / 10 * 100"></div>
+          </div>
+        </div>
+      </div>
+
       <h3>4. Writing the Dissertation or Thesis</h3>
       <p>
         The final outcome of a PhD is a dissertation (also called a thesis). This is a detailed document that presents the entire research process, findings, analysis, and conclusions. A high-quality dissertation must contribute original knowledge to the field and meet strict academic standards.
@@ -64,6 +99,23 @@
       <p>
         After submitting the dissertation, the student must defend their research before a panel of experts in an oral examination known as the Viva Voce. During this stage, examiners ask questions about the student's work to test their depth of understanding and the originality of the research.
       </p>
+
+      <!-- Button/Countdown Position 2 -->
+      <div class="inline-button-container" *ngIf="buttonStates[2].enabled">
+        <button class="inline-button" *ngIf="buttonStates[2].showButton && !buttonStates[2].showCountdown" (click)="onButtonClick(2)">
+          <span class="button-text">Continue Reading</span>
+          <span class="button-icon">→</span>
+        </button>
+        <div class="inline-countdown" *ngIf="buttonStates[2].showCountdown">
+          <div class="countdown-display">
+            <span class="countdown-number">{{ buttonStates[2].countdown }}</span>
+            <span class="countdown-text">seconds</span>
+          </div>
+          <div class="countdown-progress">
+            <div class="countdown-progress-bar" [style.width.%]="(10 - buttonStates[2].countdown) / 10 * 100"></div>
+          </div>
+        </div>
+      </div>
 
       <h2>The Journey of a PhD Student</h2>
       <p>
@@ -78,6 +130,23 @@
       <p>
         Despite the difficulties, the journey is also highly rewarding. PhD students develop independence, resilience, critical thinking ability, and confidence in their intellectual capabilities. They learn how to investigate complex problems and approach challenges creatively.
       </p>
+
+      <!-- Button/Countdown Position 3 -->
+      <div class="inline-button-container" *ngIf="buttonStates[3].enabled">
+        <button class="inline-button" *ngIf="buttonStates[3].showButton && !buttonStates[3].showCountdown" (click)="onButtonClick(3)">
+          <span class="button-text">Continue Reading</span>
+          <span class="button-icon">→</span>
+        </button>
+        <div class="inline-countdown" *ngIf="buttonStates[3].showCountdown">
+          <div class="countdown-display">
+            <span class="countdown-number">{{ buttonStates[3].countdown }}</span>
+            <span class="countdown-text">seconds</span>
+          </div>
+          <div class="countdown-progress">
+            <div class="countdown-progress-bar" [style.width.%]="(10 - buttonStates[3].countdown) / 10 * 100"></div>
+          </div>
+        </div>
+      </div>
 
       <h2>The Challenges in PhD Education</h2>
       <p>
@@ -158,6 +227,23 @@
       <p>
         In today's knowledge-based economy, organizations value individuals who can conduct deep analysis, solve complex problems, and generate innovative ideas — all qualities of a PhD graduate.
       </p>
+
+      <!-- Button/Countdown Position 4 -->
+      <div class="inline-button-container" *ngIf="buttonStates[4].enabled">
+        <button class="inline-button" *ngIf="buttonStates[4].showButton && !buttonStates[4].showCountdown" (click)="onButtonClick(4)">
+          <span class="button-text">Continue Reading</span>
+          <span class="button-icon">→</span>
+        </button>
+        <div class="inline-countdown" *ngIf="buttonStates[4].showCountdown">
+          <div class="countdown-display">
+            <span class="countdown-number">{{ buttonStates[4].countdown }}</span>
+            <span class="countdown-text">seconds</span>
+          </div>
+          <div class="countdown-progress">
+            <div class="countdown-progress-bar" [style.width.%]="(10 - buttonStates[4].countdown) / 10 * 100"></div>
+          </div>
+        </div>
+      </div>
 
       <h2>The Importance of PhD Education in Society</h2>
       <p>

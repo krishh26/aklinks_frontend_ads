@@ -1,11 +1,13 @@
 .aklinks-ads {
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 2rem 0.5rem;
+  padding: 2rem clamp(0.5rem, 2vw, 1rem);
   display: flex;
   justify-content: center;
   align-items: flex-start;
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
 
   // Inline Button Container Styles
   .inline-button-container {
@@ -244,8 +246,65 @@
     transition: opacity 0.3s ease;
   }
 
+  .blog-shell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.25rem;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: min(1520px, 100%);
+    margin: 0 auto;
+  }
+
+  .blog-sidebar {
+    flex: 0 0 auto;
+    position: sticky;
+    top: 1rem;
+    align-self: flex-start;
+    padding: 0.5rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .blog-sidebar__ads {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .blog-shell .blog-post {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: min(100%, 68rem);
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .blog-sidebar {
+      position: static;
+      width: 100%;
+      order: -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: none;
+      background: transparent;
+      padding: 0;
+    }
+
+    .blog-sidebar__ads {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
   .blog-post {
-    max-width: 95%;
+    max-width: 100%;
     width: 100%;
     background: #ffffff;
     border-radius: 12px;
@@ -268,6 +327,20 @@
       letter-spacing: -0.5px;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
+
+    .ad-smartlink-banner {
+      margin: 1.25rem 0 0;
+      text-align: center;
+    }
+
+    .ad-smartlink-banner__link {
+      display: inline-block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.95);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   }
 
   .blog-content {
@@ -277,6 +350,20 @@
     line-height: 1.8;
     color: #333333;
     font-size: 1.1rem;
+
+    .ad-magnify-container-row {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      width: 100%;
+    }
+
+    .ad-native-inline {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      width: 100%;
+    }
 
     .blog-intro {
       font-size: 1.2rem;

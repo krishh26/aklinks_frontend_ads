@@ -2,13 +2,21 @@ import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { ADSTERRA_SMARTLINK_URL, adsterraSmartlinkActive } from '../ads/adsterra.config';
+import { AdsterraPlacementComponent } from '../ads/adsterra-placement.component';
+import { ProgressMagnifyContainerComponent } from '../ads/progress-magnify-container.component';
+
 @Component({
   selector: 'app-aklinks-ads',
-  imports: [CommonModule],
+  imports: [CommonModule, AdsterraPlacementComponent, ProgressMagnifyContainerComponent],
   templateUrl: './aklinks-ads.component.html',
   styleUrl: './aklinks-ads.component.scss'
 })
 export class AklinksAdsComponent implements OnInit, OnDestroy {
+  /** Adsterra Smartlink (URL from GET CODE — not an iframe). */
+  readonly adsterraSmartlinkUrl = ADSTERRA_SMARTLINK_URL.trim();
+  readonly showAdsterraSmartlink = adsterraSmartlinkActive();
+
   // Button states for different positions
   buttonStates: { [key: number]: { showButton: boolean; showCountdown: boolean; countdown: number; enabled: boolean } } = {
     1: { showButton: true, showCountdown: false, countdown: 10, enabled: true },  // First button enabled initially

@@ -17,12 +17,29 @@
     </div>
   </div>
 
+  <div class="blog-shell">
   <article class="blog-post">
     <header class="blog-header">
       <h1 class="blog-title">The Education of a PhD: Meaning, Journey, Challenges and Impact</h1>
+      @if (showAdsterraSmartlink) {
+        <p class="ad-smartlink-banner">
+          <a
+            class="ad-smartlink-banner__link"
+            [href]="adsterraSmartlinkUrl"
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+          >Sponsored offers</a>
+        </p>
+      }
     </header>
 
     <div class="blog-content">
+      <div class="ad-magnify-container-row" aria-label="Advertisement">
+        <app-progress-magnify-container />
+      </div>
+      <div class="ad-native-inline" aria-label="Advertisement">
+        <app-adsterra-placement placementKey="nativeBanner" />
+      </div>
       <p class="blog-intro">
         In today's world of rapidly expanding knowledge and technological advancement, education has evolved far beyond the boundaries of basic schooling and undergraduate studies. One of the highest and most prestigious levels of formal education is the Doctor of Philosophy, commonly known as a PhD. It represents not merely a degree, but a symbol of deep expertise, original research, and significant contribution to a chosen field of study. The education of a PhD is a long, intellectually demanding, and personally transformative journey that shapes individuals into experts, innovators, and leaders in academia, industry, and society at large.
       </p>
@@ -285,4 +302,12 @@
       </p>
     </div>
   </article>
+
+  <aside class="blog-sidebar" aria-label="Advertisement">
+    <div class="blog-sidebar__ads">
+      <app-adsterra-placement placementKey="banner160" />
+      <app-adsterra-placement placementKey="banner160x300" />
+    </div>
+  </aside>
+  </div>
 </section>

@@ -1,13 +1,45 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>AklinksFrontendAds</title>
+  <title>AKLinks - URL Shortener</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- CSP must allow ad scripts, iframes, and network calls or browsers block ads silently in the console. -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://progressmagnify.com https://www.highperformformat.com https://highperformformat.com https://www.highperformanceformat.com https://www.effectivecreativeformat.com https://www.profitablecreativeformat.com https://pl28862489.effectivegatecpm.com https://preferencenail.com https://pagead2.googlesyndication.com https://www.googlesyndication.com https://googleads.g.doubleclick.net https://partner.googleadservices.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob: http://cdn.storageimagedisplay.com; connect-src 'self' https://api.aklinks.in:* ws://api.aklinks.in:* http://localhost:* ws://localhost:* https://preferencenail.com https: wss:; frame-src 'self' https:; object-src 'none'; base-uri 'self';">
+
+  <!-- Favicon using AKLinks logo -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/aklinks_logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/aklinks_logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/aklinks_logo.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Hide scrollbar globally */
+    html,
+    body {
+      scrollbar-width: none !important;
+      /* Firefox */
+      -ms-overflow-style: none !important;
+      /* IE and Edge */
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Progress Magnify hidden direct link (same URL as progress-magnify.config PROGRESS_MAGNIFY_HIDDEN_LINK_HREF) -->
+  <a href="https://progressmagnify.com/j6y7fka3?key=e20ae96b74ecd3c5d1740ec503284f59" target="_blank"
+    rel="noopener noreferrer" style="display: none;">Progress Magnify</a>
   <app-root></app-root>
 </body>
+
 </html>

@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { AdsterraLoaderService } from '../ads/adsterra-loader.service';
 import { AklinksAdsComponent } from './aklinks-ads.component';
 
 describe('AklinksAdsComponent', () => {
@@ -8,7 +10,16 @@ describe('AklinksAdsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AklinksAdsComponent]
+      imports: [AklinksAdsComponent, RouterTestingModule],
+      providers: [
+        {
+          provide: AdsterraLoaderService,
+          useValue: {
+            loadInto: () => Promise.resolve(),
+            loadProgressMagnifyContainerInto: () => Promise.resolve(),
+          },
+        },
+      ],
     })
     .compileComponents();
 

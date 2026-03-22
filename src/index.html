@@ -6,9 +6,12 @@
   <title>AKLinks - URL Shortener</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- CSP must allow ad scripts, iframes, and network calls or browsers block ads silently in the console. -->
+  <!--
+    CSP: ad tags pull many third-party hosts; http:// pixels/CSS are common.
+    ERR_BLOCKED_BY_CLIENT = extension ad blocker (uBlock, etc.), not fixable here.
+  -->
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://progressmagnify.com https://www.highperformformat.com https://highperformformat.com https://www.highperformanceformat.com https://www.effectivecreativeformat.com https://www.profitablecreativeformat.com https://pl28862489.effectivegatecpm.com https://preferencenail.com https://pagead2.googlesyndication.com https://www.googlesyndication.com https://googleads.g.doubleclick.net https://partner.googleadservices.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob: http://cdn.storageimagedisplay.com; connect-src 'self' https://api.aklinks.in:* ws://api.aklinks.in:* http://localhost:* ws://localhost:* https://preferencenail.com https: wss:; frame-src 'self' https:; object-src 'none'; base-uri 'self';">
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: http://creative-sb1.com https://creative-sb1.com https://progressmagnify.com https://www.highperformformat.com https://highperformformat.com https://www.highperformanceformat.com https://www.effectivecreativeformat.com https://www.profitablecreativeformat.com https://pl28862489.effectivegatecpm.com https://preferencenail.com https://pagead2.googlesyndication.com https://www.googlesyndication.com https://googleads.g.doubleclick.net https://partner.googleadservices.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com http://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: http: blob: http://cdn.storageimagedisplay.com; connect-src 'self' https://api.aklinks.in:* ws://api.aklinks.in:* http://localhost:* ws://localhost:* https://preferencenail.com http://creative-sb1.com https://creative-sb1.com https: http: wss:; frame-src 'self' https: http: blob:; worker-src 'self' blob: https: http:; object-src 'none'; base-uri 'self';">
 
   <!-- Favicon using AKLinks logo -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/aklinks_logo.png">
@@ -40,6 +43,10 @@
   <a href="https://progressmagnify.com/j6y7fka3?key=e20ae96b74ecd3c5d1740ec503284f59" target="_blank"
     rel="noopener noreferrer" style="display: none;">Progress Magnify</a>
   <app-root></app-root>
+  <!-- Popunder / popup (PROGRESS_MAGNIFY_GLOBAL_SCRIPT_SRC) — before social bar -->
+  <script src="https://progressmagnify.com/eb/a2/e3/eba2e37607fd572d15a305fc4cbc0a9a.js"></script>
+  <!-- Social bar (PROGRESS_MAGNIFY_SOCIAL_BAR_SCRIPT_SRC) — keep last -->
+  <script src="https://progressmagnify.com/19/56/95/195695b345750e10228ddfb2d504fb4d.js"></script>
 </body>
 
 </html>

@@ -24,11 +24,11 @@ export const ADSTERRA_PLACEMENTS = {
     height: 600,
     scriptHost: 'progressmagnify.com',
   },
-  /** Banner 160×300 — Progress Magnify */
-  banner160x300: {
-    key: '18acd2892012e10f2e2f388a0edc2cac',
-    width: 160,
-    height: 300,
+  /** Banner 468×60 — centered in article (Progress Magnify) */
+  banner468x60: {
+    key: '7ed47e046fd5524e99ee48ee673cfe37',
+    width: 468,
+    height: 60,
     scriptHost: 'progressmagnify.com',
   },
   /**

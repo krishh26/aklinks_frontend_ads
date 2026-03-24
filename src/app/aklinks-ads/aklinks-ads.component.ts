@@ -19,10 +19,10 @@ export class AklinksAdsComponent implements OnInit, OnDestroy {
 
   // Button states for different positions
   buttonStates: { [key: number]: { showButton: boolean; showCountdown: boolean; countdown: number; enabled: boolean } } = {
-    1: { showButton: true, showCountdown: false, countdown: 10, enabled: true },  // First button enabled initially
-    2: { showButton: false, showCountdown: false, countdown: 10, enabled: false }, // Others disabled initially
-    3: { showButton: false, showCountdown: false, countdown: 10, enabled: false },
-    4: { showButton: false, showCountdown: false, countdown: 10, enabled: false }
+    1: { showButton: true, showCountdown: false, countdown: 15, enabled: true },  // First button enabled initially
+    2: { showButton: false, showCountdown: false, countdown: 15, enabled: false }, // Others disabled initially
+    3: { showButton: false, showCountdown: false, countdown: 15, enabled: false },
+    4: { showButton: false, showCountdown: false, countdown: 15, enabled: false }
   };
   
   showScrollMessage: boolean = false;
@@ -93,7 +93,7 @@ export class AklinksAdsComponent implements OnInit, OnDestroy {
     
     this.buttonStates[step].showButton = false;
     this.buttonStates[step].showCountdown = true;
-    this.buttonStates[step].countdown = 10;
+    this.buttonStates[step].countdown = 15;
     this.currentStep = step;
     this.hasScrolled = false;
     this.showContinueButton = false;
@@ -132,12 +132,17 @@ export class AklinksAdsComponent implements OnInit, OnDestroy {
       if (nextStep <= this.totalSteps && this.buttonStates[nextStep]) {
         this.buttonStates[nextStep].enabled = true;
         this.buttonStates[nextStep].showButton = true;
-        this.buttonStates[nextStep].countdown = 10;
+        this.buttonStates[nextStep].countdown = 15;
       }
     }
   }
 
   getProgressPercentage(): number {
     return (this.currentStep / this.totalSteps) * 100;
+  }
+
+  /** Segment indicator (1/total … total/total); advances when the user clicks Continue after each scroll step. */
+  get pageLabel(): string {
+    return `${this.completedSteps + 1}/${this.totalSteps}`;
   }
 }

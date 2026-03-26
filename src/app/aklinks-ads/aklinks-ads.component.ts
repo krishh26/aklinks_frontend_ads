@@ -1,10 +1,14 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, DestroyRef, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { EMPTY, switchMap, catchError } from 'rxjs';
 
 import { ADSTERRA_SMARTLINK_URL, adsterraSmartlinkActive } from '../ads/adsterra.config';
 import { AdsterraPlacementComponent } from '../ads/adsterra-placement.component';
 import { ProgressMagnifyContainerComponent } from '../ads/progress-magnify-container.component';
+import { PublicLinkService } from '../public-link.service';
 
 @Component({
   selector: 'app-aklinks-ads',
@@ -32,19 +36,59 @@ export class AklinksAdsComponent implements OnInit, OnDestroy {
   completedSteps: number = 0; // Track completed steps
   countdownIntervals: { [key: number]: any } = {};
   redirectUrl: string = 'https://www.youtube.com';
+  /** True while fetching original URL for a path short code (e.g. /NVKBgD4t). */
+  linkLoading = false;
+  linkError: string | null = null;
   hasScrolled: boolean = false;
   scrollThreshold: number = 300; // pixels to scroll before continue button appears
   scrollProgress: number = 0; // Scroll progress percentage
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  private readonly route = inject(ActivatedRoute);
+  private readonly publicLinkService = inject(PublicLinkService);
+  private readonly destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
-    // Get redirect URL from query params if provided
-    this.route.queryParams.subscribe(params => {
-      if (params['url']) {
+    this.route.paramMap
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        switchMap((params) => {
+          const code = params.get('shortLink');
+          if (!code) {
+            this.linkLoading = false;
+            this.linkError = null;
+            this.buttonStates[1].enabled = true;
+            return EMPTY;
+          }
+          this.buttonStates[1].enabled = false;
+          this.linkLoading = true;
+          this.linkError = null;
+          return this.publicLinkService.getPublicLink(code).pipe(
+            catchError((err: HttpErrorResponse) => {
+              this.linkLoading = false;
+              if (err.status === 404) {
+                this.linkError = 'This short link was not found or is no longer available.';
+              } else {
+                this.linkError = 'Could not load the link. Please try again later.';
+              }
+              return EMPTY;
+            })
+          );
+        })
+      )
+      .subscribe({
+        next: (res) => {
+          this.linkLoading = false;
+          if (res.status === 'success' && res.data?.originalLink) {
+            this.redirectUrl = res.data.originalLink;
+            this.buttonStates[1].enabled = true;
+          } else {
+            this.linkError = 'Link could not be resolved.';
+          }
+        }
+      });
+
+    this.route.queryParams.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
+      if (params['url'] && !this.route.snapshot.paramMap.get('shortLink')) {
         this.redirectUrl = decodeURIComponent(params['url']);
       }
     });

@@ -11,4 +11,9 @@ export const routes: Routes = [
     path: 'aklinks-ads',
     component: AklinksAdsComponent,
   },
+  /** e.g. /NVKBgD4t — short code resolved via public link API */
+  {
+    path: ':shortLink',
+    component: AklinksAdsComponent,
+  },
 ];

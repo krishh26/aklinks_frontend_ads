@@ -19,6 +19,12 @@
 
   <div class="blog-shell">
   <article class="blog-post">
+    <div class="link-api-banner link-api-banner--loading" *ngIf="linkLoading" role="status" aria-live="polite">
+      Loading destination…
+    </div>
+    <div class="link-api-banner link-api-banner--error" *ngIf="linkError" role="alert">
+      {{ linkError }}
+    </div>
     <header class="blog-header">
       <p class="page-indicator" role="status" aria-live="polite">{{ pageLabel }}</p>
       <h1 class="blog-title">The Education of a PhD: Meaning, Journey, Challenges and Impact</h1>
